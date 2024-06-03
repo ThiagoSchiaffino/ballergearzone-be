@@ -1,16 +1,16 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { LoginService } from '../services/login.service';
-import { UsuarioService } from 'src/usuario/usuario.service';
 
-@Controller('login')
+
+@Controller('/login')
 export class LoginController {
 
-    constructor(private Loginservice: LoginService, private usuarioService: UsuarioService) { }
+    constructor(private Loginservice: LoginService) { }
 
     @Post()
 
-    async login(@Body() body: { username: string, password: string }) {
-        this.usuarioService.buscarPorEmail(body.username);
+    async login(@Body() body: { email: string, password: string }) {
+        return await this.Loginservice.login(body);
         //const user = this.Loginservice.validateUser(body.username body.password);
     }
 }

@@ -4,7 +4,7 @@ import { CommonModule } from './common/common.module';
 import { AdministradorModule } from './administrador/administrador.module';
 
 @Module({
-  imports: [UsuarioModule, CommonModule, AdministradorModule],
+  imports: [ CommonModule, AdministradorModule, UsuarioModule],
   controllers: [],
   providers: [],
 })

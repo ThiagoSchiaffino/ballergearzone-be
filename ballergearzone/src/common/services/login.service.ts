@@ -15,7 +15,7 @@ export class LoginService {
   async login(user: any) {
     const resultQuery: RowDataPacket[] = await this.dbService.executeSelect(
       usuarioQueries.selectByEmail,
-      [user.username],
+      [user.email],
     );
     // const passHashFromRequest = await this.generateHash(user.password);
     //onsole.log(passHashFromRequest);
@@ -26,14 +26,15 @@ export class LoginService {
     const dbUser = {
       email: resultQuery[0].email,
       password: resultQuery[0].password,
-      role: resultQuery[0].codigo,
+      rolID: resultQuery[0].rolID,
     };
+    const isValidPassword = (user.password == dbUser.password)
+    //await bcrypt.compare(
+      //user.password,
+      //dbUser.password,
+    //);
 
-    const isValidPassword = await bcrypt.compare(
-      user.password,
-      dbUser.password,
-    );
-
+    
     if (!isValidPassword) {
       throw new HttpException('Acceso denegado', HttpStatus.UNAUTHORIZED);
     }
@@ -42,8 +43,10 @@ export class LoginService {
   }
 
   getAccessToken(user: any) {
-    const payload = { email: user.email, role: user.role };
+    const payload = { email: user.email, rolID: user.rolID };
     return {
+      email: user.email, 
+      rolID: user.rolID,
       accessToken: this.jwtService.sign(payload),
     };
   }
