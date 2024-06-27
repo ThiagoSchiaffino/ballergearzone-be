@@ -37,7 +37,7 @@ export class LoginService {
 
     
     if (!isValidPassword) {
-      throw new HttpException('Acceso putas denegado', HttpStatus.UNAUTHORIZED);
+      throw new HttpException('Acceso gente denegado', HttpStatus.UNAUTHORIZED);
     }
 
     return this.getAccessToken(dbUser);

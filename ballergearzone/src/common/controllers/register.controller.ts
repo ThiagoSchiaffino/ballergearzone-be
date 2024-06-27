@@ -6,7 +6,7 @@ export class RegisterController {
   constructor(private registerService: RegisterService) {}
 
   @Post()
-  async Register(@Body() body: { email: string; password: string }) {
+  async Register(@Body() body: { firstName: string; edad: number; email: string; telefono:number; password: string }) {
     const username = await this.registerService.register(body);
     return { message: `Usuario ${username} creado con éxito` };
   }

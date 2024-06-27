@@ -17,7 +17,7 @@ export class RegisterService {
   }
 
   async register(user: any): Promise<any> {
-    const encriptedPassword = await this.generateHash(user.password);
+    const encriptedPassword = await this.generateHash(user.contrasenia);
 
     await this.dbService.executeQuery(usuarioQueries.registerUser, [
       user.email,
