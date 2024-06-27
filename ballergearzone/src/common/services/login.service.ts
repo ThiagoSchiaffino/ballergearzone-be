@@ -19,6 +19,7 @@ export class LoginService {
     );
     // const passHashFromRequest = await this.generateHash(user.password);
     //onsole.log(passHashFromRequest);
+    console.log(resultQuery)
     if (resultQuery.length === 0) {
       throw new HttpException('Acceso denegado', HttpStatus.UNAUTHORIZED);
     }
@@ -28,7 +29,7 @@ export class LoginService {
       password: resultQuery[0].password,
       rolID: resultQuery[0].rolID,
     };
-    const isValidPassword = (user.password == dbUser.password)
+    const isValidPassword = (user.contrasenia == dbUser.password)
     //await bcrypt.compare(
       //user.password,
       //dbUser.password,

@@ -9,7 +9,7 @@ export class LoginController {
 
     @Post()
 
-    async login(@Body() body: { email: string, password: string }) {
+    async login(@Body() body: { email: string, contrasenia: string }) {
         return await this.Loginservice.login(body);
         //const user = this.Loginservice.validateUser(body.username body.password);
     }
