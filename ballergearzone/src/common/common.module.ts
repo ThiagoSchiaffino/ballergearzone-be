@@ -6,6 +6,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { UsuarioService } from 'src/usuario/usuario.service';
 import { RegisterController } from './controllers/register.controller';
 import { RegisterService } from './services/register.service';
+import { ProductoController } from './controllers/producto.controller';
+import { ProductoService } from './services/producto.service';
 //import { JwtMiddlewareGuard } from 'src/common/middleware/auth-guard';
 //import { RegisterController } from './controllers/register.controller';
 //import { RegisterService } from './services/register.service';
@@ -18,8 +20,8 @@ import { RegisterService } from './services/register.service';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  controllers: [LoginController, RegisterController],
-  providers: [LoginService, DatabaseService, UsuarioService, RegisterService],
+  controllers: [LoginController, RegisterController, ProductoController],
+  providers: [LoginService, DatabaseService, UsuarioService, RegisterService, ProductoService],
   exports: [DatabaseService],
 })
 export class CommonModule {}
