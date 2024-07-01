@@ -18,9 +18,12 @@ export class ProductoService {
           return {
             productoId: rs['productoId'],
             precio: rs['precio'],
-            imagenes: rs['imagenes'],
+            foto: rs['foto'],
             stock: rs['stock'],
             equipo: rs['equipo'],
+            descripcion: rs['descripcion'],
+            fotodelete: rs['fotodelete'],
+            camisetade: rs['camisetade'],
           };
         });
         return resultProducto;
