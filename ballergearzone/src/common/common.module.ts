@@ -8,6 +8,8 @@ import { RegisterController } from './controllers/register.controller';
 import { RegisterService } from './services/register.service';
 import { ProductoController } from './controllers/producto.controller';
 import { ProductoService } from './services/producto.service';
+import { ImageService } from './services/image.service';
+import { ImagesController } from './controllers/imagenes.controller';
 //import { JwtMiddlewareGuard } from 'src/common/middleware/auth-guard';
 //import { RegisterController } from './controllers/register.controller';
 //import { RegisterService } from './services/register.service';
@@ -20,8 +22,8 @@ import { ProductoService } from './services/producto.service';
       signOptions: { expiresIn: '1h' },
     }),
   ],
-  controllers: [LoginController, RegisterController, ProductoController],
-  providers: [LoginService, DatabaseService, UsuarioService, RegisterService, ProductoService],
+  controllers: [LoginController, RegisterController, ProductoController, ImagesController],
+  providers: [LoginService, DatabaseService, UsuarioService, RegisterService, ProductoService, ImageService],
   exports: [DatabaseService],
 })
 export class CommonModule {}
