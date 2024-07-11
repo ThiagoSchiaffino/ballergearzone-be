@@ -17,8 +17,7 @@ export class LoginService {
       usuarioQueries.selectByEmail,
       [user.email],
     );
-    // const passHashFromRequest = await this.generateHash(user.password);
-    //onsole.log(passHashFromRequest);
+
     console.log(resultQuery)
     if (resultQuery.length === 0) {
       throw new HttpException('Acceso denegado', HttpStatus.UNAUTHORIZED);
@@ -28,13 +27,12 @@ export class LoginService {
       email: resultQuery[0].email,
       password: resultQuery[0].password,
       rolID: resultQuery[0].rolID,
+      usuarioId: resultQuery[0].usuarioid,
     };
-    const isValidPassword = (user.contrasenia == dbUser.password)
-    //await bcrypt.compare(
-      //user.password,
-      //dbUser.password,
-    //);
-
+    const isValidPassword =await bcrypt.compare(
+      user.contrasenia,
+      dbUser.password,
+    );
     
     if (!isValidPassword) {
       throw new HttpException('Acceso gente denegado', HttpStatus.UNAUTHORIZED);
@@ -44,7 +42,7 @@ export class LoginService {
   }
 
   getAccessToken(user: any) {
-    const payload = { email: user.email, rolID: user.rolID };
+    const payload = { email: user.email, rolID: user.rolID, id:user.usuarioId };
     return {
       email: user.email, 
       rolID: user.rolID,

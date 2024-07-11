@@ -10,5 +10,8 @@ export class ProductoController {
 @Get()
   async verProducto(): Promise<any[]> {
     return await this.Productoservice.verProducto();
-  } 
+  }
+  //@Post()
+  //async crearProducto(): Promise<any>
+//
 }

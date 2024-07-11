@@ -3,6 +3,7 @@ import {
     HttpStatus,
     ParseFilePipeBuilder,
     Post,
+    Req,
     UploadedFile,
     UseInterceptors,
   } from '@nestjs/common';
@@ -16,7 +17,7 @@ import {
   
     @Post('/upload')
     @UseInterceptors(FileInterceptor('file'))
-    async uploadImage(
+    async uploadImage(@Req() request,
       @UploadedFile(
         new ParseFilePipeBuilder()
           .addFileTypeValidator({
@@ -30,6 +31,6 @@ import {
       )
       file: Express.Multer.File,
     ) {
-      return await this.imageService.upload(file);
+      return await this.imageService.upload(file, request.user);
     }
   }
