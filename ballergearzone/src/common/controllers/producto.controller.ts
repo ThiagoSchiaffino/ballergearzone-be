@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param } from '@nestjs/common';
 import { ProductoService } from '../services/producto.service';
 
 
@@ -11,7 +11,9 @@ export class ProductoController {
   async verProducto(): Promise<any[]> {
     return await this.Productoservice.verProducto();
   }
-  //@Post()
-  //async crearProducto(): Promise<any>
-//
+  @Get(":zona")
+  async verProductoPorZona(@Param ("zona")zona:string): Promise<any[]> {
+    return await this.Productoservice.verProductoPorZona(zona);
+  }
+  
 }
