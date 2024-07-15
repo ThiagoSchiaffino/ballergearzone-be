@@ -18,3 +18,16 @@ create table if not exists usuarios (
    primary key (usuarioID),
    constraint FK_usuarios_roles foreign key (rolID) references roles (rolID)
 );
+
+create table if not exists productos (
+productoId int not null auto_increment,
+precio int not null,
+foto varchar(90),
+stock int not null,
+equipo varchar(200),
+descripcion varchar (300),
+fotodelete varchar (400),
+camisetade varchar (80),
+zona int not null,
+primary key (productoID)
+);
