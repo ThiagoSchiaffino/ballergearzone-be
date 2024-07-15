@@ -1,4 +1,4 @@
-# Bakend de la aplicacion Ballers Gear Zone
+# Backend de la aplicacion Ballers Gear Zone
 
 ### Instrucciones de instalacion
 * Descargar el repositorio de Github
