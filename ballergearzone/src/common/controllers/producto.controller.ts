@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Get, Param } from '@nestjs/common';
+import { Body, Controller, Post, Get, Param, Delete } from '@nestjs/common';
 import { ProductoService } from '../services/producto.service';
 
 
@@ -16,4 +16,6 @@ export class ProductoController {
     return await this.Productoservice.verProductoPorZona(zona);
   }
   
+ //@Delete()//recibir id de producto
+  //linea como la 16 que llama a un producto service. eliminarproducto y pasarlo (id)
 }
