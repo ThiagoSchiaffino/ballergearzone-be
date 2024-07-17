@@ -16,6 +16,8 @@ export class ProductoController {
     return await this.Productoservice.verProductoPorZona(zona);
   }
   
- //@Delete()//recibir id de producto
-  //linea como la 16 que llama a un producto service. eliminarproducto y pasarlo (id)
+ @Delete(':productoId')//recibir id de producto
+ async eliminarProducto(@Param ("productoId") productoId: number) {
+  await this.Productoservice.eliminarProducto (productoId);//linea como la 16 que llama a un producto service. eliminarproducto y pasarlo (id)
+} 
 }

@@ -49,6 +49,12 @@ export class ProductoService {
         });
         return resultProducto;
       }
+      async eliminarProducto(productoId:number){
+        await this.dbService.executeQuery(
+          productoQueries.deleteProducto, [productoId]
+        );
+        return console.log("se elimino correctamente");
+      }
       //agregar funcion que sea delete producto (llamarla igual al controlador)
       //ejecutar una querie de delete que reciba como parametro un id
       //return si se elimino bien
