@@ -2,6 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { DatabaseService } from './db.service';
 import usuarioQueries from 'src/usuario/queries/usuario.queries';
 import * as bcrypt from 'bcrypt';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
+import productoQueries from 'src/usuario/queries/producto.queries';
+import Venta from './venta.model';
 
 @Injectable()
 export class RegisterService {
@@ -27,5 +30,23 @@ export class RegisterService {
     ]);
 
     return user.email;
+  }
+  async registroVentas(): Promise<Venta[]> {
+    const resultQuery: RowDataPacket[] = await this.dbService.executeSelect(
+      productoQueries.getVentas,
+      [],
+    );
+    const resultProducto = resultQuery.map((rs: RowDataPacket) => {
+      return {
+        fecha: rs['fecha'],
+        ventaID: rs['ventaID'],
+        usuarioID: rs['usuarioID'],
+        email: rs['email'],
+        equipo: rs['equipo'],
+        camisetade: rs['camisetade'],
+        precio: rs['precio'],
+      };
+    });
+    return resultProducto;
   }
 }
