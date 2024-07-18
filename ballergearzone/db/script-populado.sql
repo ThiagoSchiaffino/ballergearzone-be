@@ -41,3 +41,10 @@ insert into productos (precio, foto, stock, equipo, descripcion, fotodelete, cam
 insert into productos (precio, foto, stock, equipo, descripcion, fotodelete, camisetade, zona) values (15000, "/camisetawizards.jpg", 15, "Washington Wizards", "Camiseta de Washington Wizards, temporada 2023/24", "gsdg", "Kyle Kuzma", 1)
 
 select * from productos
+
+
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 5, 4)
+
+select * from registroDeVentas r
+join usuarios u on r.usuarioID = u.usuarioID
+join productos p on r.productoId = p.productoId

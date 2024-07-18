@@ -31,3 +31,13 @@ camisetade varchar (80),
 zona int not null,
 primary key (productoID)
 );
+
+CREATE TABLE IF NOT EXISTS registroDeVentas (
+    ventaID INT NOT NULL AUTO_INCREMENT,
+    fecha DATE,
+    productoId INT,
+    usuarioID INT,
+    PRIMARY KEY (ventaID),
+    CONSTRAINT FK_registroDeVentas_usuarios FOREIGN KEY (usuarioID) REFERENCES usuarios(usuarioID),
+    CONSTRAINT FK_registroDeVentas_productos FOREIGN KEY (productoId) REFERENCES productos(productoId)
+);
