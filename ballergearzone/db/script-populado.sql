@@ -5,6 +5,8 @@ insert into usuarios (email, password, activo, rolID) values ('admin@ballersgear
 insert into usuarios (email, password, activo, rolID) values ('joacoblopez@gmail.com','123456', 1, 1);
 insert into usuarios (email, password, activo, rolID) values ('thiagoschafa2@gmail.com','123456', 1, 1);
 insert into usuarios (email, password, activo, rolID) values ('admin2@ballersgearzone.com','$2a$08$W59jWcwio1TiLx4A8iRyTOa5XYDHVuaYh5fyi7sICD4STIyD7HhEW', 1, 1);
+insert into usuarios (email, password, activo, rolID) values ('ianmoyano@gmail.com','$2a$08$W59jWcwio1TiLx4A8iRyTOa5XYDHVuaYh5fyi7sICD4STIyD7HhEW', 1, 2);
+
 
 select * from usuarios
 select * from roles
@@ -44,6 +46,14 @@ select * from productos
 
 
 insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 5, 4)
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 12, 1);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 10, 5);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 25, 5);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 9, 5);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 17, 8);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 26, 8);
+insert into registroDeVentas (fecha, productoId, usuarioID) values (now(), 46, 8);
+
 
 select * from registroDeVentas r
 join usuarios u on r.usuarioID = u.usuarioID

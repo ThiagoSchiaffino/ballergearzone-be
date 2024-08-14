@@ -3,7 +3,7 @@ create schemas if not exists ballersgearzone;
 use ballersgearzone;
 
 create table if not exists roles (
-   rolID integer auto_increment,
+   rolID integer auto_increment not null,
    codigo VARCHAR(3),
    nombre VARCHAR(50),
    primary key (rolID)
@@ -11,7 +11,7 @@ create table if not exists roles (
 
 create table if not exists usuarios (
    usuarioID integer auto_increment,
-   email VARCHAR(256) not null,
+   email VARCHAR(256) not null UNIQUE,
    password VARCHAR(100),
    activo tinyint,
    rolID integer,
